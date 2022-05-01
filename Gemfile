@@ -58,3 +58,5 @@ gem 'carrierwave'
 gem 'rails-i18n', '~> 6.0'
 
 gem 'i18n_generators'
+
+gem 'net-smtp'
