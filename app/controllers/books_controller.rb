@@ -6,7 +6,11 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    if params[:locale].nil?
+      @books = Book.all
+    else
+      render plain: "locateされているよ"
+    end
   end
 
   # GET /books/1
