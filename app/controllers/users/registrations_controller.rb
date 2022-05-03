@@ -6,17 +6,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    p "**************************************************"
-    p "params:#{params}"
-    p "**************************************************"
     super
   end
 
   # POST /resource
   def create
-    p "**************************************************"
-    p "params:#{params}"
-    p "**************************************************"
     super
   end
 
