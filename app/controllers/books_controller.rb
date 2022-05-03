@@ -6,6 +6,9 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
+    p "**************************************************"
+    p user_signed_in?
+    p "**************************************************"
     @books = Book.order(:id).page(params[:page])
   end
 
