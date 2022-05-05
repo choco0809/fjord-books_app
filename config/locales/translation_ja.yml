@@ -9,10 +9,11 @@ ja:
         memo: メモ  #g
         picture: 写真  #g
         title: タイトル  #g
-  common:
-    books: 本
-    newbook: 新規作成
-    editingbook: 編集書籍
+  books:
+      new:
+        title: 新規作成
+      edit:
+        title: 編集書籍
   action:
     show: 表示
     edit: 編集
