@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  layout 'users.html.erb'
   # GET /users
   def index
     @users = User.order(:id).page(params[:page])
