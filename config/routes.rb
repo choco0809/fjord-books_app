@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+  
   root 'books#index'
   # ユーザ登録機能（registrations）、ログイン・ログアウト機能（sessions）へアクセスがあった場合
   # 下記のxxx.rbファイルを参照するように設定

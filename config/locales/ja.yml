@@ -226,33 +226,3 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
-  common:
-    sign_up: アカウント登録
-    forgot_your_password: パスワードを忘れましたか？
-    login: ログイン
-    logout: ログアウト
-    characters_minimum: "%{minimum_leng}文字以上"
-  users:
-    index:
-      title: ユーザー一覧
-    show:
-      title: ユーザー情報
-    edit:
-      title: ユーザー情報編集
-  devise:
-    registrations:
-      edit:
-        delete_account: アカウントを削除する
-        password_change: (変更しない場合は空白にしてください)
-        current_password: (パスワードを変更するためには、現在のパスワードを入力して下さい。)
-        are_you_sure: 本当に大丈夫ですか？
-    sessions:
-      new:
-        title: ログイン画面
-  layouts:
-    application:
-      edit: ユーザー編集
-      login_user: ログインユーザ：
-      sign_up: 新規登録
-      user_list: ユーザー一覧
-      book_list: 書籍一覧
