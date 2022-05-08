@@ -10,10 +10,10 @@ ja:
         picture: 写真  #g
         title: タイトル  #g
   books:
-      new:
-        title: 新規作成
-      edit:
-        title: 編集書籍
+    new:
+      title: 新規作成
+    edit:
+      title: 編集書籍
   action:
     show: 表示
     edit: 編集
