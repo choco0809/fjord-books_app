@@ -37,13 +37,18 @@
   </div>
 
   <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
     <%= f.label :adress %><br />
-    <%= f.text_area :adress, autocomplete: "name" %>
+    <%= f.text_area :adress %>
   </div>
 
   <div class="field">
     <%= f.label :introduction %><br />
-    <%= f.text_area :introduction, autocomplete: "name" %>
+    <%= f.text_area :introduction %>
   </div>
 
   <div class="actions">
