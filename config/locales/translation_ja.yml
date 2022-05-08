@@ -10,6 +10,8 @@ ja:
         picture: 写真  #g
         title: タイトル  #g
   books:
+    index:
+      title: 本
     new:
       title: 新規作成
     edit:
