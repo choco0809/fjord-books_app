@@ -11,5 +11,5 @@ ja:
       user:
         name: 名前
         postal_code: 郵便番号
-        adress: 住所
+        address: 住所
         introduction: 自己紹介

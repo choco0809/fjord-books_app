@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   # 追加したカラムのデータをparamsに付与する
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name adress introduction postal_code])
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[name adress introduction postal_code])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name address introduction postal_code])
   end
 end
