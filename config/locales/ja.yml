@@ -238,3 +238,7 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+  users:
+    show:
+      follower_count: フォロワー数
+      followed_count: フォロー数
