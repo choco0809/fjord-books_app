@@ -1,0 +1,6 @@
+ja:
+  users:
+    follows:
+      title: フォロー中
+    followers:
+      title: フォロワー
