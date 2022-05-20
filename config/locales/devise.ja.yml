@@ -1,0 +1,58 @@
+ ja: 
+  common:
+    sign_up: アカウント登録
+    login: ログイン
+    logout: ログアウト
+    characters_minimum: "%{minimum_leng}文字以上"
+    hello: こんにちわ
+    change_my_password: パスワードの変更
+  devise:
+    confirmations:
+      new:
+        title: 確認メール再送信
+        resend_confirmation_instructions: 再送信
+    mailer:
+      confirmation_instructions:
+        welcome: ようこそ
+        confirm_your_account_email: アカウントメールの確認は、以下のリンクから行えます
+        confirm_my_account: アカウントの確認
+      email_changed:
+      reset_password_instructions:
+        change_password: パスワードの変更は、以下のリンクから行うことができます。
+        dont_change_password: パスワードを変更しない場合は、このメールを無視してください。
+        change_until_access: パスワードは上記のリンクから変更するまで、変更されません。
+    passwords:
+      new:
+        title: パスワードの再設定
+        reset_password_instructions: 再設定メールの送信
+      edit:
+        title: パスワードの再設定
+        new_password: 新しいパスワード
+        confirm_new_password: 新しいパスワードの確認
+    registrations:
+      edit:
+        delete_account: アカウントを削除する
+        password_change: (変更しない場合は空白にしてください)
+        current_password: (パスワードを変更するためには、現在のパスワードを入力して下さい。)
+        are_you_sure: 本当に大丈夫ですか？
+    sessions:
+      new:
+        title: ログイン画面
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: 確認メールの再送信
+        forgot_your_password: パスワードを忘れましたか？
+  layouts:
+    application:
+      edit: ユーザー編集
+      login_user: ログインユーザ：
+      sign_up: 新規登録
+      user_list: ユーザー一覧
+      book_list: 書籍一覧
+  users:
+    index:
+      title: ユーザー一覧
+    show:
+      title: ユーザー情報
+    edit:
+      title: ユーザー情報編集
