@@ -69,11 +69,11 @@ User.transaction do
 end
 
 # 画像は生成も読み込みも時間がかかるので一部のデータだけにする
-User.order(:id).each.with_index(1) do |user, n|
-  next unless (n % 8).zero?
+# User.order(:id).each.with_index(1) do |user, n|
+#   next unless (n % 8).zero?
 
-  image_url = Faker::Avatar.image(slug: user.email, size: '150x150')
-  user.avatar.attach(io: URI.parse(image_url).open, filename: 'avatar.png')
-end
+#   image_url = Faker::Avatar.image(slug: user.email, size: '150x150')
+#   user.avatar.attach(io: URI.parse(image_url).open, filename: 'avatar.png')
+# end
 
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
