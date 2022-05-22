@@ -12,12 +12,12 @@ class User < ApplicationRecord
   has_many :follower_user, class_name: 'FollowsRelationship', foreign_key: 'followed_id', dependent: :destroy, inverse_of: 'followed'
   has_many :followers, through: :follower_user, source: :follower
 
-  def follow(user_id)
-    following_user.create(followed_id: user_id)
+  def follow(user)
+    following_user.create(followed_id: user)
   end
 
-  def unfollow(user_id)
-    following_user.find_by(followed_id: user_id).destroy
+  def unfollow(user)
+    following_user.find_by(followed_id: user).destroy
   end
 
   def following?(user)
