@@ -44,14 +44,14 @@
 <p>
   <%= link_to user_follows_path(@user) do %>
   <strong><%= t('.followed_count') %>:</strong>
-  <%= @following_users.count %>
+  <%= @user.followings.count %>
   <% end %>
 </p>
 
 <p>
   <%= link_to user_followers_path(@user) do %>
   <strong><%= t('.follower_count') %>:</strong>
-  <%= @follower_users.count %>
+  <%= @user.followers.count %>
   <% end %>
 </p>
 
