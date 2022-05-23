@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th><%= Report.human_attribute_name(:title) %></th>
+      <th><%= t('.contributor') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,7 +13,8 @@
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.title %></td>
-        <td><%= link_to t('views.common.destroy'), user_report_path(report.user_id, report.id), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+        <td><%= user_name_or_email(report.user_id) %></td>
+        <td><%= link_to t('views.common.destroy'), report, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +24,4 @@
 
 <br>
 
-<%= link_to t('views.common.new'), new_user_report_path %>
+<%= link_to t('views.common.new'), new_report_path %>

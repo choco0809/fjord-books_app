@@ -255,3 +255,6 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+  reports:
+    index:
+      contributor: 投稿者
