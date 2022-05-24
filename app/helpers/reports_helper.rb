@@ -1,6 +1,6 @@
 module ReportsHelper
-  def user_name_or_email(user_id)
-    @user = User.find(user_id)
-    user_name = @user.name == '' ? @user.email : @user.name
+  def user_name_or_email(report)
+    @user = User.find(report[:user_id])
+    @user.name == '' ? @user.email : @user.name
   end
 end
