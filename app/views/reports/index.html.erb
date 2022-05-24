@@ -13,7 +13,8 @@
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.title %></td>
-        <td><%= user_name_or_email(report.user_id) %></td>
+        <td><%= user_name_or_email(report) %></td>
+        <td><%= link_to t('views.common.show'), report %></td>
         <td><%= link_to t('views.common.destroy'), report, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
       </tr>
     <% end %>
