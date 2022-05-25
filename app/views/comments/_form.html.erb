@@ -1,0 +1,22 @@
+<%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
+  <% if commentable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(commentable.errors.count, "error") %> prohibited this commentable from being saved:</h2>
+
+      <ul>
+        <% commentable.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :comment_contents %>
+    <%= form.text_area :comment_contents %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
