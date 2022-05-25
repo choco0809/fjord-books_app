@@ -15,7 +15,6 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
-    @report.user_id = current_user.id
     respond_to do |format|
       if @report.save
         format.html { redirect_to reports_path, notice: t('controllers.common.notice_create', name: Report.model_name.human) }
@@ -50,6 +49,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:title, :contents)
+    params.require(:report).permit(:title, :contents).merge(user_id: current_user.id)
   end
 end
