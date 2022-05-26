@@ -3,12 +3,13 @@
     <tr>
       <th align="left"><%= user_name_or_email(comment) %></th>
       <th><%= l comment.updated_at, format: :long %></th>
-    </tr>
-    <tr>
-      <td><%= simple_format(comment.comment_contents) %></td>
       <% if current_user.id == comment[:user_id] %>
+        <td><%= link_to t('views.common.edit'), edit_polymorphic_path([commentable, comment]) %></td>
         <td><%= link_to t('views.common.destroy'), [commentable, comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
       <% end %>
+    </tr>
+    <tr>
+      <td colspan="2"><%= simple_format(comment.comment_contents) %></td>
     </tr>
   <% end %>
 </table>
