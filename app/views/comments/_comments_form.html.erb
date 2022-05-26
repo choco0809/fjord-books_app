@@ -1,0 +1,11 @@
+<table>
+  <% @comments.each do |comment| %>
+    <tr>
+      <th align="left"><%= user_name_or_email(comment) %></th>
+      <th><%= comment.updated_at %></th>
+    </tr>
+    <tr>
+      <td><%= simple_format(comment.comment_contents) %></td>
+    </tr>
+  <% end %>
+</table>
