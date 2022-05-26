@@ -6,6 +6,7 @@
     </tr>
     <tr>
       <td><%= simple_format(comment.comment_contents) %></td>
+      <td><%= link_to t('views.common.destroy'), [commentable, comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
     </tr>
   <% end %>
 </table>

@@ -1,7 +1,7 @@
 <h1><%= @report.title %></h1>
 <h2><%= simple_format(@report.contents) %></h2>
 
-<%= render 'comments/comments_form' %>
+<%= render 'comments/comments_form', commentable: @report %>
 <%= render 'comments/form', commentable: @report %>
 
 <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
