@@ -258,3 +258,6 @@ ja:
   reports:
     index:
       contributor: 投稿者
+  comments:
+    form:
+      title: 新規コメント
