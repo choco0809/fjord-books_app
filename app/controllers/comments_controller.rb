@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = @commentable.comments.build(comments_params)  
+    @comment = @commentable.comments.build(comments_params)
     respond_to do |format|
       if @comment.save
         format.html { redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
