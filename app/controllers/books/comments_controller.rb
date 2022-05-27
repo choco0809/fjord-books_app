@@ -1,7 +1,19 @@
 class Books::CommentsController < CommentsController
-  before_action :set_commentable, only: %i[create]
+  before_action :set_commentable, only: %i[create destroy edit update]
 
   def create
+    super
+  end
+
+  def destroy
+    super
+  end
+
+  def edit
+    super
+  end
+
+  def update
     super
   end
 
