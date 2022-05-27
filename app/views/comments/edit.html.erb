@@ -1,0 +1,4 @@
+<h1><%= t('.title') %></h1>
+
+<%= render 'form', commentable: @commentable, comment: @comment %>
+<%= link_to t('views.common.back'), polymorphic_path(@commentable) %>

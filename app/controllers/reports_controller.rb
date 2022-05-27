@@ -11,6 +11,7 @@ class ReportsController < ApplicationController
 
   def show
     @comments = @report.comments
+    @comment = Comment.new
   end
 
   def edit; end
