@@ -260,4 +260,6 @@ ja:
       contributor: 投稿者
   comments:
     form:
-      title: 新規コメント
+      title: コメント
+    edit:
+      title: コメント編集
