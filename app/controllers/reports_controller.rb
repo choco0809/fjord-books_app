@@ -19,7 +19,11 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     respond_to do |format|
-      format.html { redirect_to reports_path, notice: t('controllers.common.notice_create', name: Report.model_name.human) }
+      if @report.save
+        format.html { redirect_to reports_path, notice: t('controllers.common.notice_create', name: Report.model_name.human) }
+      else
+        format.html { redirect_to new_report_path, alert: t('controllers.common.alert_create', name: Report.model_name.human) }
+      end
     end
   end
 
