@@ -21,3 +21,4 @@ ja:
       report:
         title: 題名
         contents: 内容
+        created_at: 投稿日
