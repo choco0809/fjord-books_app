@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[destroy edit update]
-  
+
   def create
     @comment = @commentable.comments.build(comments_params)
     respond_to do |format|
@@ -36,8 +38,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def comments_params  
+  def comments_params
     params.require(:comment).permit(:comment_contents).merge(user_id: current_user.id)
-  end  
-
+  end
 end
