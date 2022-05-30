@@ -6,6 +6,7 @@
 steve:
   name: 'steve'
   email: 'steve@example.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 david:
   name: ''
