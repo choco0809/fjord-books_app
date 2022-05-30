@@ -9,7 +9,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'ユーザー名が存在している時、ユーザー名を返す' do
-    # me = users(:steve)
     assert_equal 'steve', @me.name_or_email
   end
 
