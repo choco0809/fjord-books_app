@@ -3,72 +3,52 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  def setup
+    @me = users(:steve)
+    @he = users(:david)
+  end
+
   test 'ユーザー名が存在している時、ユーザー名を返す' do
-    user = users(:steve)
-    assert_equal 'steve', user.name_or_email
+    # me = users(:steve)
+    assert_equal 'steve', @me.name_or_email
   end
 
   test 'ユーザー名が存在しない時、メールアドレスを返す' do
-    user = users(:david)
-    assert_equal 'david@example.com', user.name_or_email
+    assert_equal 'david@example.com', @he.name_or_email
   end
 
-  test 'あるユーザーを別ユーザーをフォローした場合' do
-    me = users(:steve)
-    he = users(:david)
-    assert me.follow(he)
+  test 'あるユーザー(he)を別ユーザー(me)がフォローした場合' do
+    @me.follow(@he)
+    assert @me.following?(@he)
   end
 
-  test '既にフォローしているユーザーをフォロー解除した場合' do
-    me = users(:steve)
-    he = users(:david)
-    me.follow(he)
-    assert me.unfollow(he)
+  test 'あるユーザー(he)がフォローしているユーザー(me)のフォローを解除した場合' do
+    @he.follow(@me)
+    @he.unfollow(@me)
+    assert_not @he.following?(@me)
   end
 
-  test 'フォローしていないユーザーをフォロー解除した場合' do
-    me = users(:steve)
-    he = users(:david)
-    assert_not me.unfollow(he)
+  test 'あるユーザー(he)がフォローしていないユーザー(me)のフォローを解除した場合' do
+    @he.unfollow(@me)
+    assert_not @he.following?(@me)
   end
 
-  test '新規ユーザーをフォローした場合' do
-    me = users(:steve)
-    he = users(:david)
-    assert me.follow(he)
+  test 'あるユーザー（me）が特定のユーザー（he）にフォローされている場合' do
+    @he.follow(@me)
+    assert @me.followed_by?(@he)
   end
 
-  test '既にフォローしているユーザーをフォローした場合' do
-    me = users(:steve)
-    he = users(:david)
-    me.follow(he)
-    assert me.follow(he)
+  test 'あるユーザー（he）が特定のユーザー（me）にフォローされていない場合' do
+    assert_not @me.followed_by?(@he)
   end
 
-  test 'あるユーザが特定のユーザーにフォローされている場合' do
-    me = users(:steve)
-    he = users(:david)
-    he.follow(me)
-    assert me.followed_by?(he)
+  test 'あるユーザー（he）が特定のユーザー（me）をフォローしている場合' do
+    @he.follow(@me)
+    assert @he.following?(@me)
   end
 
-  test 'あるユーザが特定のユーザーにフォローされていない場合' do
-    me = users(:steve)
-    he = users(:david)
-    assert_not me.followed_by?(he)
-  end
-
-  test 'あるユーザーが特定のユーザーをフォローしている時' do
-    me = users(:steve)
-    he = users(:david)
-    me.follow(he)
-    assert me.following?(he)
-  end
-
-  test 'あるユーザーが特定のユーザーをフォローしていない' do
-    me = users(:steve)
-    he = users(:david)
-    assert_not me.following?(he)
+  test 'あるユーザー（he）が特定のユーザー（me）をフォローしていない場合' do
+    assert_not @he.following?(@me)
   end
 
 end
