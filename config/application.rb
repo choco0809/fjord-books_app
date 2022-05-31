@@ -20,5 +20,12 @@ module BooksApp
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.time_zone = 'Tokyo'
+    config.generators do |g|
+      # Railsジェネレータがfactory_bot用のファイルを生成するのを無効化
+      g.factory_bot false
+
+      # ファクトリファイルの置き場を変更
+      g.factory_bot dir: 'custom/dir/for/factories'
+    end
   end
 end
