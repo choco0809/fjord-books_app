@@ -49,5 +49,4 @@ class UserTest < ActiveSupport::TestCase
   test 'あるユーザー（he）が特定のユーザー（me）をフォローしていない場合' do
     assert_not @he.following?(@me)
   end
-
 end
