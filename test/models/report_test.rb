@@ -4,22 +4,22 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
   def setup
-    @Steve = create(:user)
-    @David = create(:user)
+    @steve = create(:user)
+    @david = create(:user)
   end
 
   test 'userとtarget_userが同じ場合' do
-    my_report = create(:report, user: @Steve)
-    assert my_report.editable?(@Steve)
+    my_report = create(:report, user: @steve)
+    assert my_report.editable?(@steve)
   end
 
   test 'userとtarget_userが異なる場合' do
-    my_report = create(:report, user: @Steve)
-    assert_not my_report.editable?(@David)
+    my_report = create(:report, user: @steve)
+    assert_not my_report.editable?(@david)
   end
 
   test 'created_atをDate型に変換する' do
-    my_report = create(:report, user: @Steve)
+    my_report = create(:report, user: @steve)
     assert_equal Date, my_report.created_on.class
   end
 end
