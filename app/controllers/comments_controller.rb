@@ -17,13 +17,21 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment.update(comments_params)
-    redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+    if current_user.id == @comment.user[:id]
+      @comment.update(comments_params)
+      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+    else
+      redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_edit', name: Comment.model_name.human)
+    end
   end
 
   def destroy
-    @comment.destroy
-    redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    if current_user.id == @comment.user[:id]
+      @comment.destroy
+      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    else
+      redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_edit', name: Comment.model_name.human)
+    end
   end
 
   private
