@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment.user = current_user
-    if current_user.id == @comment.user[:id]
+    if current_user == @comment.user
       if @comment.update(comments_params)
         redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
       else
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @comment.user[:id]
+    if current_user == @comment.user
       @comment.destroy
       redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
