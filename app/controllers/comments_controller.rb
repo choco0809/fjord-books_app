@@ -12,9 +12,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-    @comments = @commentable.comments
-  end
+  def edit; end
 
   def update
     if current_user.id == @comment.user[:id]
