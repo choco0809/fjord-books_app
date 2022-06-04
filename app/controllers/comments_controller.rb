@@ -18,8 +18,11 @@ class CommentsController < ApplicationController
 
   def update
     if current_user.id == @comment.user[:id]
-      @comment.update(comments_params)
-      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+      if @comment.update(comments_params)
+        redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+      else
+        redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_update', name: Comment.model_name.human)
+      end
     else
       redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_edit', name: Comment.model_name.human)
     end
