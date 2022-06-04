@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.build(comments_params)
+    @comment.user = current_user
     if @comment.save
       redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
@@ -15,6 +16,7 @@ class CommentsController < ApplicationController
   def edit; end
 
   def update
+    @comment.user = current_user
     if current_user.id == @comment.user[:id]
       if @comment.update(comments_params)
         redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
@@ -42,6 +44,6 @@ class CommentsController < ApplicationController
   end
 
   def comments_params
-    params.require(:comment).permit(:comment_contents).merge(user_id: current_user.id)
+    params.require(:comment).permit(:comment_contents)
   end
 end
