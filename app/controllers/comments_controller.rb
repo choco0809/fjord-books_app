@@ -5,12 +5,10 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.build(comments_params)
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
-      else
-        format.html { redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_create', name: Comment.model_name.human) }
-      end
+    if @comment.save
+      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_create', name: Comment.model_name.human)
     end
   end
 
@@ -19,17 +17,13 @@ class CommentsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      @comment.update(comments_params)
-      format.html { redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
-    end
+    @comment.update(comments_params)
+    redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
   end
 
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-    end
+    redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
