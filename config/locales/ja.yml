@@ -266,3 +266,5 @@ ja:
       title: コメント
     edit:
       title: コメント編集
+    comments_form:
+      not_comment: "まだコメントは登録されていません"
