@@ -6,41 +6,29 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comments_params)
     @comment.user = current_user
-    if @comment.save
-      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
-    else
-      redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_create', name: Comment.model_name.human)
-    end
+    @comment.save!
+    redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
   end
 
   def edit; end
 
   def update
-    @comment.user = current_user
-    if current_user == @comment.user
-      if @comment.update(comments_params)
-        redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
-      else
-        redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_update', name: Comment.model_name.human)
-      end
-    else
-      redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_edit', name: Comment.model_name.human)
-    end
+    @comment.update!(comments_params)
+    redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
   end
 
   def destroy
-    if current_user == @comment.user
-      @comment.destroy
+    if @comment.destroy
       redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
-      redirect_to polymorphic_path(@commentable), alert: t('controllers.common.alert_edit', name: Comment.model_name.human)
+      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.alert_destory', name: Comment.model_name.human)
     end
   end
 
   private
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
   def comments_params
