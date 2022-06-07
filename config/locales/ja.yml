@@ -247,7 +247,8 @@ ja:
       notice_destroy: "%{name}が削除されました。"
       alert_create: "%{name}の作成に失敗しました。"
       alert_edit: "他人の日報/コメントを編集、削除することはできません。"
-      alert_update: "%{name}が更新に失敗しました。"
+      alert_update: "%{name}の更新に失敗しました。"
+      alert_destory: "%{name}の削除に失敗しました。"
   relationships:
     create:
       notice: "フォローしました。"
