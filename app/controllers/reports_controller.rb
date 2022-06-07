@@ -23,35 +23,33 @@ class ReportsController < ApplicationController
     if @report.save
       redirect_to reports_path, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
-      redirect_to new_report_path, alert: t('controllers.common.alert_create', name: Report.model_name.human)
+      flash.now[:alert] = t('controllers.common.alert_create', name: Report.model_name.human)
+      render ('reports/new')
     end
   end
 
   def update
-    if current_user == @report.user
-      if @report.update(report_params)
-        redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-      else
-        redirect_to @report, alert: t('controllers.common.alert_update', name: Report.model_name.human)
-      end
+    if @report.update(report_params)
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
-      redirect_to @report, alert: t('controllers.common.alert_edit', name: Report.model_name.human)
+      flash.now[:alert] = t('controllers.common.alert_update', name: Report.model_name.human)
+      render 'reports/edit'
     end
   end
 
   def destroy
-    if current_user == @report.user
-      @report.destroy
+    if @report.destroy
       redirect_to reports_path, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
     else
-      redirect_to reports_path, alert: t('controllers.common.alert_edit', name: Report.model_name.human)
+      flash.now[:alert] = t('controllers.common.alert_destory', name: Report.model_name.human)
+      render 'reports/index'
     end
   end
 
   private
 
   def set_report
-    @report = Report.find(params[:id])
+    @report = current_user.report.find_by(params[:id])
   end
 
   def report_params
