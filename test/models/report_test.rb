@@ -20,6 +20,6 @@ class ReportTest < ActiveSupport::TestCase
 
   test 'created_atをDate型に変換する' do
     my_report = create(:report, user: @steve)
-    assert_equal Date, my_report.created_on.class
+    assert_equal my_report.created_at.to_date, my_report.created_on
   end
 end
