@@ -18,15 +18,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'SteveをDavidがフォローした場合' do
-    assert_equal @david.follow(@steve), Relationship.find_by(follower_id: @david.id)
+    assert_equal @david.follow(@steve), Relationship.find_by(follower: @david)
   end
 
   test 'DavidがSteveのフォローを解除した場合' do
-    assert_nil @david.unfollow(@steve)
+    create(:relationship, following: @steve, follower: @david)
+    assert_nil @steve.unfollow(@david)
   end
 
   test 'SteveがDavidにフォローされている場合' do
-    @david.follow(@steve)
+    create(:relationship, following: @steve, follower: @david)
     assert @steve.followed_by?(@david)
   end
 
