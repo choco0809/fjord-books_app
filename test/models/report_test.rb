@@ -19,7 +19,9 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'created_atをDate型に変換する' do
-    my_report = create(:report, user: @steve)
-    assert_equal my_report.created_at.to_date, my_report.created_on
+    travel_to Time.zone.local(2022, 6, 13) do
+      my_report = create(:report, user: @steve)
+      assert_equal my_report.created_at.to_date, my_report.created_on
+    end
   end
 end
