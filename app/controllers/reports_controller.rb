@@ -49,7 +49,7 @@ class ReportsController < ApplicationController
   private
 
   def set_report
-    @report = current_user.report.find_by(params[:id])
+    @report = current_user.report.find_by!(params[:id])
   end
 
   def report_params
