@@ -19,7 +19,7 @@ class ReportsController < ApplicationController
   def edit; end
 
   def create
-    @report = current_user.report.build(report_params)
+    @report = current_user.reports.build(report_params)
     if @report.save
       redirect_to reports_path, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
@@ -49,7 +49,7 @@ class ReportsController < ApplicationController
   private
 
   def set_report
-    @report = current_user.report.find_by!(params[:id])
+    @report = current_user.reports.find_by!(params[:id])
   end
 
   def report_params
