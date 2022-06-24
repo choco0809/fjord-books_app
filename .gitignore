@@ -42,3 +42,6 @@ yarn-debug.log*
 
 /public/uploads/*
 .env
+
+# RunyMineで作成されたファイルを対象外
+/.idea/*

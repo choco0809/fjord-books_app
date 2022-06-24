@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  memo: MyText
+  title: 日報１
+  memo: テスト用の日報です
 
 two:
   title: MyString
