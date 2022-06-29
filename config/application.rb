@@ -18,5 +18,10 @@ module BooksApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g|
+      g.assets false
+    end
+    config.time_zone = 'Asia/Tokyo'
+    config.i18n.default_locale = :ja
   end
 end

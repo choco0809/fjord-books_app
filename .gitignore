@@ -42,3 +42,6 @@ yarn-debug.log*
 
 /public/uploads/*
 .env
+
+# RubyMine プロジェクトフォルダを対象外
+/.idea*
